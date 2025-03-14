@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta http-equiv="refresh" content="10"> -->
+    <title>Indikator</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+</head>
+
+<body>
+    <div class="container py-3">
+        <header>
+            <div class="p-3 pb-md-4 mx-auto text-center">
+                <h1 class="display-4 fw-normal text-body-emphasis">Indikator Ruangan</h1>
+                <p class="fs-5 text-body-secondary">Monitor Suhu, Kelembaban, & Tekanan Udara</p>
+            </div>
+        </header>
+
+        <main>
+            <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+                <div class="col">
+                    <div class="card mb-4 rounded-3 shadow-sm border-info">
+                        <div class="card-header py-3 text-bg-info border-info">
+                            <h4 class="my-0 fw-normal"><i class="bi bi-thermometer"></i> Suhu</h4>
+                        </div>
+                        <div class="card-body">
+                            <h1 class="card-title">{{report.suhu}} °C</small></h1>
+                            {% if report.suhu <= 18 %}
+                                <h3>Dingin ❄️</h3>
+                            {% elif report.suhu >= 18 and report.suhu <= 24 %}
+                                <h3>Normal 😊</h3>
+                            {% elif report.suhu >= 24 %}
+                                <h3>Panas 🔥</h3>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card mb-4 rounded-3 shadow-sm border-success">
+                        <div class="card-header py-3 text-bg-success border-success">
+                            <h4 class="my-0 fw-normal"><i class="bi bi-droplet-fill"></i> Kelembaban</h4>
+                        </div>
+                        <div class="card-body">
+                            <h1 class="card-title">{{report.kelembaban}} %</small></h1>
+                            {% if report.kelembaban <= 30 %}
+                                <h3>Kering ❄️</h3>
+                            {% elif report.kelembaban >= 30 and report.kelembaban <= 60 %}
+                                <h3>Normal 😊</h3>
+                            {% elif report.kelembaban >= 60 %}
+                                <h3>Lembab 🌧</h3>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card mb-4 rounded-3 shadow-sm border-warning">
+                        <div class="card-header py-3 text-bg-warning border-warning">
+                            <h4 class="my-0 fw-normal"><i class="bi bi-tornado"></i> Tekanan</h4>
+                        </div>
+                        <div class="card-body">
+                            <h1 class="card-title">{{report.tekanan}} hPa</small></h1>
+                            {% if report.tekanan <= 980 %}
+                                <h3>Sangat Rendah 🌪️</h3>
+                            {% elif report.tekanan >= 980 and report.tekanan <= 1000 %}
+                                <h3>Rendah 🌧</h3>
+                            {% elif report.tekanan >= 1000 and report.tekanan <= 1020 %}
+                                <h3>Normal 🌤</h3>
+                            {% elif report.tekanan >= 1020 and report.tekanan <= 1040 %}
+                                <h3>Tinggi ☀️</h3>
+                            {% elif report.tekanan >= 1040 %}
+                                <h3>Sangat Tinggi 🔥</h3>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
