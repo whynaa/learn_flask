@@ -1,17 +1,13 @@
 from flask import Flask, render_template, redirect, url_for
 app = Flask(__name__)
 
-@app.route("/")
-def index():
-    return render_template("index.html")
-
-@app.route("/hello/admin")
+@app.route("/admin")
 def hello_admin():
-    return render_template("hello.html", name = "admin")
+    return "Hello Admin"
 
-@app.route("/hello/guest/<name>")
+@app.route("/guest/<name>")
 def hello_guest(guest):
-    return render_template("hello.html", name = guest)
+    return "hello {} as Guest" .format(guest)
 
 @app.route("/user/<name>")
 def hello_user(name):
